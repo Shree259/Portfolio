@@ -51,10 +51,13 @@
       </nav>
 
       <div class="header-actions">
-        <a href="https://github.com/BRaven23" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-header" id="github-header-btn">
+        <a href="assets/Bhagya_Y_Resume_Updated.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-header hover-target" id="resume-header-btn">
+          <i class="far fa-file-pdf"></i> Resume
+        </a>
+        <a href="https://github.com/BRaven23" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-header hover-target" id="github-header-btn">
           <i class="fab fa-github"></i> GitHub
         </a>
-        <button id="menu-toggle" class="hamburger-menu" aria-label="Toggle Navigation Menu">
+        <button id="menu-toggle" class="hamburger-menu hover-target" aria-label="Toggle Navigation Menu">
           <span></span>
           <span></span>
           <span></span>
@@ -81,11 +84,11 @@
             Software Development Engineer specializing in high-throughput backend APIs, structured relational databases and microservices. Experienced in designing optimized data flows, writing clean object-oriented code and bridging the gap between raw data and scalable systems.
           </p>
           <div class="hero-ctas animate-slide-up">
-            <a href="#contact" class="btn btn-primary" id="hero-contact-btn">
+            <a href="#contact" class="btn btn-primary hover-target" id="hero-contact-btn">
               Get In Touch <i class="fas fa-arrow-right"></i>
             </a>
-            <a href="#about" class="btn btn-outline" id="hero-explore-btn">
-              Explore My Work
+            <a href="assets/Bhagya_Y_Resume_Updated.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline hover-target" id="hero-resume-btn">
+              <i class="far fa-file-pdf"></i> Resume PDF
             </a>
           </div>
           <div class="hero-socials animate-slide-up">
@@ -104,7 +107,7 @@
           <div class="profile-image-container">
             <div class="profile-image-glow"></div>
             <div class="profile-image-wrapper">
-              <img src="assets/profile.jpg" alt="Bhagyashree PY" class="profile-image">
+              <img src="assets/profile.jpg?v=2" alt="Bhagyashree PY" class="profile-image">
             </div>
           </div>
         </div>
@@ -346,9 +349,15 @@
                 Built to identify zero-day network threats and volumetric traffic anomalies. Exposes async FastAPI endpoints to a React dashboard. Tradeoff: Selected an Isolation Forest model over deep neural networks to maintain low-latency packet sniffing on standard CPU-bound network taps.
               </p>
               <div class="project-links">
-                <a href="https://github.com/BRaven23/AI_Network_Defence_System" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <a href="https://github.com/BRaven23/AI_Network_Defence_System" target="_blank" rel="noopener noreferrer" class="project-link-btn hover-target">
                   <i class="fab fa-github"></i> Code
                 </a>
+                <button class="project-link-btn hover-target" id="demo-btn-threat">
+                  <i class="fas fa-play"></i> Console Sim
+                </button>
+                <button class="project-link-btn hover-target" id="arch-btn-threat">
+                  <i class="fas fa-project-diagram"></i> System Arch
+                </button>
               </div>
             </div>
           </div>
@@ -370,9 +379,15 @@
                 ML pre-screening classification API achieving 96.49% test accuracy on the Wisconsin Diagnostic dataset. Tradeoff: Selected Random Forest Classifier over SVM to utilize built-in feature importances (like <code>area_worst</code>) for clinical explainability.
               </p>
               <div class="project-links">
-                <a href="https://github.com/BRaven23/Tumor_Detection" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <a href="https://github.com/BRaven23/Tumor_Detection" target="_blank" rel="noopener noreferrer" class="project-link-btn hover-target">
                   <i class="fab fa-github"></i> Code
                 </a>
+                <button class="project-link-btn hover-target" id="demo-btn-tumor">
+                  <i class="fas fa-play"></i> Console Sim
+                </button>
+                <button class="project-link-btn hover-target" id="arch-btn-tumor">
+                  <i class="fas fa-project-diagram"></i> System Arch
+                </button>
               </div>
             </div>
           </div>
@@ -394,9 +409,15 @@
                 Financial microservice ledger managing accounts and transaction histories. Tradeoff: Wrote optimized multi-table JOINs in raw SQL instead of using an ORM to gain precise query optimization and avoid N+1 query overhead.
               </p>
               <div class="project-links">
-                <a href="https://github.com/BRaven23/financial-advisory-system" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <a href="https://github.com/BRaven23/financial-advisory-system" target="_blank" rel="noopener noreferrer" class="project-link-btn hover-target">
                   <i class="fab fa-github"></i> Code
                 </a>
+                <button class="project-link-btn hover-target" id="demo-btn-ledger">
+                  <i class="fas fa-play"></i> Ledger Sim
+                </button>
+                <button class="project-link-btn hover-target" id="arch-btn-ledger">
+                  <i class="fas fa-project-diagram"></i> System Arch
+                </button>
               </div>
             </div>
           </div>
@@ -470,6 +491,19 @@
             </div>
           </div>
 
+        </div>
+        
+        <!-- GitHub Feed Area -->
+        <div class="github-feed-container">
+          <div class="github-feed-title-block">
+            <i class="fab fa-github-alt"></i>
+            <h3>Recent Open Source Work</h3>
+          </div>
+          <div id="github-repos-grid" class="github-repos-grid">
+            <div class="loading-state">
+              <span>Querying GitHub API... <i class="fas fa-spinner fa-spin"></i></span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -602,6 +636,276 @@
       </div>
     </div>
   </footer>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Interactive Project Modal (Simulated Live API & Architecture View) -->
+  <div id="project-modal" class="project-modal-overlay">
+    <div class="project-modal-container glass-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">&times;</button>
+      
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active hover-target" data-tab="demo-tab" id="tab-demo-trigger">
+          <i class="fas fa-terminal"></i> Interactive API Console
+        </button>
+        <button class="modal-tab-btn hover-target" data-tab="arch-tab" id="tab-arch-trigger">
+          <i class="fas fa-sitemap"></i> System Architecture
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Tab 1: Live API Console -->
+        <div class="modal-tab-content active" id="demo-tab">
+          
+          <!-- Project 1: AI Network Threat Detection -->
+          <div id="project-demo-threat" class="project-demo-wrapper hide">
+            <div class="api-console-wrapper">
+              <div class="api-console-header">
+                <div class="console-buttons">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <span class="console-title">Network Packet Security Validator - localhost:5000</span>
+              </div>
+              <div class="api-console-body">
+                <div class="console-instructions">
+                  <p class="text-green">// Choose a dynamic network packet to pass to the anomaly scoring engine.</p>
+                </div>
+                <div class="console-controls">
+                  <div class="select-group">
+                    <label for="threat-log-select">Select Network Packet Payload:</label>
+                    <select id="threat-log-select" class="hover-target">
+                      <option value="normal_ping">GET /index.html HTTP/1.1 - Host: localhost - User-Agent: Mozilla/5.0</option>
+                      <option value="ddos_flood">POST /login HTTP/1.1 - [Connection burst: 850 requests/sec from single remote socket]</option>
+                      <option value="sql_inject">GET /items?id=1%20OR%201=1%20UNION%20SELECT%20username,password%20FROM%20users</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary btn-console hover-target" id="run-threat-btn">
+                    Scan Network Packet <i class="fas fa-shield-alt"></i>
+                  </button>
+                </div>
+                
+                <div class="console-output-container">
+                  <div class="output-spinner hide" id="threatSpinner">
+                    <div class="spinner"></div>
+                    <span class="spinner-text">Evaluating payload anomaly coefficients via Isolation Forest model...</span>
+                  </div>
+                  <pre id="threatResult" class="console-result-code">
+{
+  "status": "ready",
+  "instruction": "Select a packet payload and press 'Scan Network Packet'."
+}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Tumor Detection API -->
+          <div id="project-demo-tumor" class="project-demo-wrapper hide">
+            <div class="api-console-wrapper">
+              <div class="api-console-header">
+                <div class="console-buttons">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <span class="console-title">Oncology Diagnostic Inference Engine - localhost:5001</span>
+              </div>
+              <div class="api-console-body">
+                <div class="console-instructions">
+                  <p class="text-green">// Run Random Forest predictive models on patient cell measurements to output structured JSON responses.</p>
+                </div>
+                <div class="console-controls">
+                  <div class="select-group">
+                    <label for="tumor-select">Select Clinical Cell Sample Details:</label>
+                    <select id="tumor-select" class="hover-target">
+                      <option value="benign_sample">Clump Thickness: 2, Uniformity: 1, Mitoses: 1 (Standard benign criteria)</option>
+                      <option value="malignant_sample">Clump Thickness: 8, Uniformity: 10, Mitoses: 4 (High density malignant clustering)</option>
+                      <option value="borderline_sample">Clump Thickness: 5, Uniformity: 4, Mitoses: 2 (Intermediate risk profile)</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary btn-console hover-target" id="run-tumor-btn">
+                    Run Classifier Inference <i class="fas fa-microscope"></i>
+                  </button>
+                </div>
+                
+                <div class="console-output-container">
+                  <div class="output-spinner hide" id="tumorSpinner">
+                    <div class="spinner"></div>
+                    <span class="spinner-text">Executing classification matrix multiplication & computing diagnosis weights...</span>
+                  </div>
+                  <pre id="tumorResult" class="console-result-code">
+{
+  "status": "ready",
+  "instruction": "Select a cell sample and press 'Run Classifier Inference'."
+}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: REST API Management Service (Ledger API) -->
+          <div id="project-demo-ledger" class="project-demo-wrapper hide">
+            <div class="api-console-wrapper">
+              <div class="api-console-header">
+                <div class="console-buttons">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <span class="console-title">Financial Ledger REST API Service - localhost:8080</span>
+              </div>
+              <div class="api-console-body">
+                <div class="console-instructions">
+                  <p class="text-green">// Query direct SQL transaction ledger nodes and execute raw high-performance JOIN operations.</p>
+                </div>
+                <div class="console-controls">
+                  <div class="select-group">
+                    <label for="ledger-select">Select API Request Action:</label>
+                    <select id="ledger-select" class="hover-target">
+                      <option value="get_balance">GET /api/v1/ledger/balance?account_id=ACC-8809 (Fetch account statement with SQLite index validation)</option>
+                      <option value="post_txn">POST /api/v1/ledger/transaction (Execute thread-safe balance audit transaction & commit ACID log)</option>
+                      <option value="get_audit">GET /api/v1/ledger/audit?account_id=ACC-8809 (Integrity verification check over historical records)</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary btn-console hover-target" id="run-ledger-btn">
+                    Execute Query <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+                
+                <div class="console-output-container">
+                  <div class="output-spinner hide" id="ledgerSpinner">
+                    <div class="spinner"></div>
+                    <span class="spinner-text">Running SQLite optimized thread query and resolving multi-table joins...</span>
+                  </div>
+                  <pre id="ledgerResult" class="console-result-code">
+{
+  "status": "ready",
+  "instruction": "Select an API action and press 'Execute Query'."
+}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tab 2: System Architecture -->
+        <div class="modal-tab-content" id="arch-tab">
+          
+          <!-- Project 1: AI Network Threat Detection -->
+          <div id="project-arch-threat" class="project-arch-wrapper hide">
+            <div class="arch-visual-container">
+              <div class="arch-header">
+                <h4>AI Network Threat Detection - Pipeline Flow</h4>
+                <p>This flow highlights the packet analyzer process running Isolation Forest evaluations, routing thresholds and IPTables firewall triggers.</p>
+              </div>
+              <div class="arch-diagram-flow">
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-network-wired"></i></div>
+                  <h5>1. Packet Ingestion</h5>
+                  <p>Sniffs network traffic parsing headers, payload bytes, and socket rates.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-chart-line"></i></div>
+                  <h5>2. Anomaly Scoring</h5>
+                  <p>Evaluates packets using Scikit-Learn Isolation Forest model predictions.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-filter"></i></div>
+                  <h5>3. Mitigation Filter</h5>
+                  <p>Triggers rate-limiting when threat threshold coefficient exceeds 0.85.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-ban"></i></div>
+                  <h5>4. Socket Blocking</h5>
+                  <p>Updates local firewall configurations to restrict host access dynamically.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Tumor Detection API -->
+          <div id="project-arch-tumor" class="project-arch-wrapper hide">
+            <div class="arch-visual-container">
+              <div class="arch-header">
+                <h4>Tumor Detection API - Prediction Pipeline</h4>
+                <p>Oncology diagnostic data pipeline calculating malignant/benign probability weights using Random Forest models.</p>
+              </div>
+              <div class="arch-diagram-flow">
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-vials"></i></div>
+                  <h5>1. Ingest Data</h5>
+                  <p>Collects patient cell metrics (thickness, cell shape, mitosis indexes).</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-calculator"></i></div>
+                  <h5>2. Model Inference</h5>
+                  <p>Executes Random Forest classification vectors on the clinical metrics.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-code"></i></div>
+                  <h5>3. Payload Mapping</h5>
+                  <p>Structures predicted probabilities and feature weights into JSON files.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-chart-pie"></i></div>
+                  <h5>4. Report Delivery</h5>
+                  <p>Returns diagnostics and clinical recommendations to dashboard views.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: REST API Management Service (Ledger API) -->
+          <div id="project-arch-ledger" class="project-arch-wrapper hide">
+            <div class="arch-visual-container">
+              <div class="arch-header">
+                <h4>REST API Management Service - SQL Ledger Pipeline</h4>
+                <p>Relational ledger processing high-throughput CRUD queries using raw, optimized multi-table JOINs.</p>
+              </div>
+              <div class="arch-diagram-flow">
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-sign-in-alt"></i></div>
+                  <h5>1. API Ingestion</h5>
+                  <p>Flask routes parse parameters, credentials, and payload headers.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-database"></i></div>
+                  <h5>2. SQL Join Queries</h5>
+                  <p>Performs direct query joins on SQLite/MySQL database nodes with zero ORM overhead.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-lock"></i></div>
+                  <h5>3. ACID Enforcement</h5>
+                  <p>Locks ledger records dynamically to prevent balance deadlocks during writes.</p>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                  <div class="flow-step-icon"><i class="fas fa-check-double"></i></div>
+                  <h5>4. Response Generation</h5>
+                  <p>Constructs JSON payloads with complete validation metadata and execution times.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Custom JS -->
   <script src="index.js"></script>
